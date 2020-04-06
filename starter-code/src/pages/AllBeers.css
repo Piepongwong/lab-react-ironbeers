@@ -1,0 +1,37 @@
+.one-beer {
+    display: flex;
+    align-items: center;
+    width: 50vw;
+    justify-content: space-around;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 4%;
+    margin: 3% 0 0;
+}
+
+
+.one-beer img {
+    max-height: 20vh;
+}
+
+.beer-image {
+    width: 30%;
+    text-align: center;
+}
+
+.beer-description {
+    width: 70%;
+}
+
+.beer-description h2 {
+    font-size: 3rem;
+}
+
+.beer-description a {
+    text-decoration: none;
+    color: black;
+}
+
+.beer-description h5 {
+    color: gray;
+    font-size: 1.5rem;
+}
