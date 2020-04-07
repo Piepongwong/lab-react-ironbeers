@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from "axios";
-import "./BeerDetail.css";
+import "./styling/BeerDetail.css";
 
 
 class RandomBeer extends React.Component {

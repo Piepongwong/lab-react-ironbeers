@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "./AllBeers.css"
+import "./styling/AllBeers.css"
 
 class AllBeers extends React.Component {
     constructor() {
