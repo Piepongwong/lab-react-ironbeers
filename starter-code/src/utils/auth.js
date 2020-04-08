@@ -1,5 +1,7 @@
 import Axios from "axios";
 import qs from "qs";
+import {createBrowserHistory} from "history";
+const history = createBrowserHistory();
 
 const axios = Axios.create ({
     baseURL: "https://ih-beers-api.herokuapp.com/auth/", 
@@ -35,10 +37,20 @@ export const loggedIn = () => {
     return !!user;
 }
 
+export const logout = () => {
+    return axios ({
+        url: "/logout"
+    })
+    .then((response) => {
+        localStorage.removeItem("user");
+        history.push("/")
+    })
+}
+
 export const setUser = (user) => {
     window.localStorage.setItem("user", JSON.stringify(user));
 }
 
-export const getUser = (user) => {
+export const getUser = () => {
     return JSON.parse(window.localStorage.getItem("user"));
 }

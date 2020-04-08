@@ -27,7 +27,7 @@ export default class Login extends React.Component {
                 this.setState({
                     error: null
                 }, () => {
-                    this.props.history.push("/user/profile")
+                    this.props.history.push("/")
                 })
             })
             .catch((error) => {
@@ -47,7 +47,7 @@ export default class Login extends React.Component {
                         Log In
                     </button>
                         {this.state.error &&
-                            <p>{this.state.error.message}</p>
+                            <p>Error: {this.state.error.message}</p>
                         }
                 </div>
             </div>

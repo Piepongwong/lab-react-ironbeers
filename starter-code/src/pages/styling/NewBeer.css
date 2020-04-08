@@ -1,0 +1,29 @@
+.create-beer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-beer {
+    display: flex;
+    flex-direction: column;
+    width: max-content
+}
+
+.form-input {
+    display: flex;
+    flex-direction: column;
+    height: 7vh;
+}
+
+.form-input label {
+    font-size:1.3em;
+}
+
+.create-beer h2 {
+    margin: 5% 0 3%;
+    font-family: monospace;
+    font-size: 3.5em;
+}
+

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Link, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+import Nav from "./components/Nav";
 import Homepage from "./pages/Homepage";
 import AllBeers from "./pages/AllBeers";
 import RandomBeer from "./pages/RandomBeer";
@@ -14,11 +15,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          < Link to={`/`}>
-            <img src="/home5.png" className="App-logo" alt="logo" />
-          </Link>
-        </header>
+        <Nav />
         <Switch>
           <Route exact path="/" component={Homepage}/>
           <Route exact path="/beers" component={AllBeers}/>
