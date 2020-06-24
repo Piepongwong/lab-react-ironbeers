@@ -10,7 +10,6 @@ class Beers extends Component {
     componentDidMount() {
         axios.get('https://ih-beers-api.herokuapp.com/beers')
         .then(response => {
-          debugger
             this.setState({
                 beers: response.data
             })

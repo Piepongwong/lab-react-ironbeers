@@ -17,10 +17,7 @@ class NewBeer extends Component {
     }
 
     postTheBeer(event){
-      debugger
       event.preventDefault();
-      const theNewBeer = this.state.beer
-
       var beerData = new FormData(this.formRef.current);
 
       axios({
@@ -32,14 +29,12 @@ class NewBeer extends Component {
         method: "post"
       })
       .then((response)=>{
-        debugger
         this.setState({
           beer: {}
         })
         this.props.history.push(`/beers/${response.data._id}`); 
       })
       .catch((error)=>{
-        debugger
         console.log(error);
         this.setState({
           error: error.response.data.message
