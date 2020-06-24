@@ -31,6 +31,13 @@ class NewBeer extends Component {
         },
         method: "post"
       })
+      .then((response)=>{
+        debugger
+        this.setState({
+          beer: {}
+        })
+        this.props.history.push(`/beers/${response.data._id}`); 
+      })
       .catch((error)=>{
         debugger
         console.log(error);
