@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Navbar from '../navbar/Navbar';
-import BeerCard from './partial/BeerCard';
+import BeerCard from '../components/BeerCard';
+import Default from '../layouts/Default';
 
-
-class BeerDetail extends Component {
+class RandomBeer extends Component {
     state = {
         beers: []    
     }
@@ -21,17 +20,18 @@ class BeerDetail extends Component {
     }
 
     render() {
-        console.log(new Date('July 20, 69 00:20:18'))
         if (this.state.beers.length === 0) return (<h1>Loading...</h1>)
-        let beer = this.state.beers.find(beer => beer._id === this.props.match.params.id);
+        let randomBeerIndex = Math.floor(Math.random()*this.state.beers.length);
+        let beer = this.state.beers[randomBeerIndex];
         return(
-            <div className="beer-detail">
-                <Navbar />
-                <BeerCard {...beer} />
-    
-            </div>
+            <Default>
+                <div className="beer-random">
+                    <BeerCard {...beer} />
+                </div>
+            </Default>
+            
         )
     }
 }
 
-export default BeerDetail;
+export default RandomBeer;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; 
 
 const beerCard = (props) => {
     function firstBrewedDate(date){
@@ -23,7 +24,11 @@ const beerCard = (props) => {
                 </div>
             </div>
             <p>{props.description}</p>
-            <small>{props.contributed_by}</small>
+            <p><small>{props.contributed_by}</small></p>
+            <button onClick={props.clickToDelete}>Delete</button>
+            <button><Link to={`/beers/edit/${props.id}`}>Edit</Link></button>
+            <button><Link to={`/beers/edit-image/${props.id}`}>Edit image</Link></button>
+
         </div>
     )
 };
