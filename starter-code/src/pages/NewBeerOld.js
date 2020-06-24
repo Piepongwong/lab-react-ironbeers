@@ -7,34 +7,34 @@ import axios from "axios";
 export default class NewBeer extends Component {
     constructor(props){
         super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.formRef = React.createRef();
+        this.handleChange = this.handleChange.bind(this);
+        this.postBeer = this.postBeer.bind(this);
     }
 
     state = {
-        error: ""
+        beer: {},
+        error: null
     }
 
-    handleSubmit(e){
-        e.preventDefault();
-        let formData = new FormData(this.formRef.current);
-
-        axios({
-            url: "https://ih-beers-api.herokuapp.com/beers/new",
-            data: formData,
-            headers: {
-                'content-type': 'multipart/form-data'
-            },
-            method: "POST"
-        })
-        .then((response)=>{
-            this.props.history.push(`/beers/${response.data._id}`);
-        })
-        .catch((err)=>{
-            this.setState({
-                error: err.response.data.message
-            });
+    handleChange(e){
+        let beer = {...this.state.beer};
+        beer[e.target.name] = e.target.value;
+        this.setState({
+            beer
         });
+    }
+
+    postBeer(e){
+        e.preventDefault();
+        axios.post("https://ih-beers-api.herokuapp.com/beers/new", this.state.beer)
+            .then((response)=> {
+                this.props.history.push(`/beers/${response.data._id}`);
+            })
+            .catch((err) => {
+                this.setState({
+                    error: err.response.data.message
+                });
+            });
     }
 
     render() {
@@ -44,7 +44,7 @@ export default class NewBeer extends Component {
                     <Header />
                 </div>
                 <div className="new-beer">
-                    <form onSubmit={this.handleSubmit} ref={this.formRef}>
+                    <form onSubmit={this.postBeer}>
                         <input type="text" onChange={this.handleChange} name="name" placeholder="Beer Name"/>
                         <input type="text" onChange={this.handleChange} name="tagline" placeholder="Tagline"/>
                         <input type="text" onChange={this.handleChange} name="description" placeholder="Description"/>
@@ -52,9 +52,6 @@ export default class NewBeer extends Component {
                         <input type="text" onChange={this.handleChange} name="attenuation_level" placeholder="Attenuation Level"/>
                         <input type="text" onChange={this.handleChange} name="brewers_tips" placeholder="Brewers Tips"/>
                         <input type="text" onChange={this.handleChange} name="contributed_by" placeholder="Contributed By"/>
-                        <label className="custom-file-upload">
-                            <input type="file" name="picture"/>Upload Beer Picture
-                        </label>
                         <button type="submit">Submit</button>
                     </form>
                     {

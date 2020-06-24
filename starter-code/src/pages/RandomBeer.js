@@ -17,6 +17,14 @@ export default class RandomBeer extends Component {
             })
     }
 
+    dateFormatting(date){
+        let dateFormat = new Date(date);
+        let month = dateFormat.getMonth() + 1;
+        if (month < 10)  month = '0' + month;
+        let year = dateFormat.getFullYear();
+        return `${month}/${year}`;
+    }
+
     render() {
         if(this.state.beer === null ) return <h1>Loading...</h1>;
         return (
@@ -30,7 +38,7 @@ export default class RandomBeer extends Component {
                         <h3>{this.state.beer.name}</h3>
                         <h3>{this.state.beer.attenuation_level}</h3>
                         <h4>{this.state.beer.tagline}</h4>
-                        <h6>{this.state.beer.first_brewed}</h6>
+                        { this.state.beer.first_brewed && <h6>{this.dateFormatting(this.state.beer.first_brewed)}</h6> }
                         <p>{this.state.beer.description}</p>
                         <h6>{this.state.beer.contributed_by}</h6>
                     </div>  

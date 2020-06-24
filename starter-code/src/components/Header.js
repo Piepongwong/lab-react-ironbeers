@@ -6,7 +6,7 @@ import { faHome } from '@fortawesome/free-solid-svg-icons';
 export default class Header extends Component {
     render() {
         return (
-            <nav className="nav justify-content-center mb-2 bg-info ">
+            <nav className="nav justify-content-center mb-2 p-0 bg-info ">
                 <Link to="/">
                     <li className="nav-item text-white">
                         <h1 className="nav-link "><FontAwesomeIcon icon={faHome}/></h1>
