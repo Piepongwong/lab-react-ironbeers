@@ -4,17 +4,17 @@ import axios from "axios";
 
 export default class RandomBeer extends Component {
     constructor(props){
-        super(props)
+        super(props);
         this.state = {
           beer: null
-        }
+        };
       }
     
     componentDidMount() {
         axios.get("https://ih-beers-api.herokuapp.com/beers/random")
             .then(response => {
-            this.setState({beer: response.data})
-            })
+            this.setState({beer: response.data});
+            });
     }
 
     dateFormatting(date){

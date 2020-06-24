@@ -18,14 +18,14 @@ export default class NewBeer extends Component {
         axios.get("https://ih-beers-api.herokuapp.com/beers")
             .then(response => {
                 let beers = response.data;
-                let beer = beers.find((oneBeer)=> oneBeer._id === this.props.match.params.beerId)
-                this.setState({beer})
+                let beer = beers.find((oneBeer)=> oneBeer._id === this.props.match.params.beerId);
+                this.setState({beer});
             })
             .catch((error)=>{
                 this.setState({
                     error
-                })
-            })
+                });
+            });
     }
 
     handleChange(e){
@@ -33,14 +33,13 @@ export default class NewBeer extends Component {
         beer[e.target.name] = e.target.value;
         this.setState({
             beer
-        })
+        });
     }
 
     postBeer(e){
         e.preventDefault();
         axios.post(`https://ih-beers-api.herokuapp.com/beers/edit/${this.state.beer._id}`, this.state.beer)
             .then((response)=> {
-                debugger
                 this.props.history.push(`/beers/${response.data._id}`);
             })
             .catch((err) => {
@@ -54,9 +53,6 @@ export default class NewBeer extends Component {
         if(this.state.beer === null ) return <h1>Loading...</h1>;
         return (
             <div>
-                <div>
-                    <Header />
-                </div>
                 <div className="new-beer">
                     <form onSubmit={this.postBeer}>
                         <input type="text" onChange={this.handleChange} name="name" placeholder="Beer Name" value={this.state.beer.name}/>

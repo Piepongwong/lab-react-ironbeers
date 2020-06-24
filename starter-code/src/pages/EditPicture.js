@@ -10,7 +10,22 @@ export default class NewBeer extends Component {
     }
 
     state = {
-        error: ""
+        beer: null,
+        error: null
+    }
+
+    componentDidMount() {
+        axios.get("https://ih-beers-api.herokuapp.com/beers")
+            .then(response => {
+                let beers = response.data;
+                let beer = beers.find((oneBeer)=> oneBeer._id === this.props.match.params.beerId);
+                this.setState({beer});
+            })
+            .catch((error)=>{
+                this.setState({
+                    error
+                });
+            });
     }
 
     handleSubmit(e){
@@ -18,7 +33,7 @@ export default class NewBeer extends Component {
         let formData = new FormData(this.formRef.current);
 
         axios({
-            url: "https://ih-beers-api.herokuapp.com/beers/new",
+            url: `https://ih-beers-api.herokuapp.com/beers/edit/${this.state.beer._id}`,
             data: formData,
             headers: {
                 'content-type': 'multipart/form-data'
@@ -36,20 +51,19 @@ export default class NewBeer extends Component {
     }
 
     render() {
+        if(this.state.beer === null ) return <h1>Loading...</h1>;
         return (
             <div>
-                <div>
-                    <Header />
-                </div>
                 <div className="new-beer">
                     <form onSubmit={this.handleSubmit} ref={this.formRef}>
-                        <input type="text" name="name" placeholder="Beer Name"/>
-                        <input type="text" name="tagline" placeholder="Tagline"/>
-                        <input type="text" name="description" placeholder="Description"/>
-                        <input type="text" name="first_brewed" placeholder="First Brewed"/>
-                        <input type="text" name="attenuation_level" placeholder="Attenuation Level"/>
-                        <input type="text" name="brewers_tips" placeholder="Brewers Tips"/>
-                        <input type="text" name="contributed_by" placeholder="Contributed By"/>
+                        <input type="hidden" name="name" value={this.state.beer.name}/>
+                        <input type="hidden" name="tagline" value={this.state.beer.tagline}/>
+                        <input type="hidden" name="description" value={this.state.beer.description}/>
+                        <input type="hidden" name="first_brewed" value={this.state.beer.first_brewed}/>
+                        <input type="hidden" name="attenuation_level" value={this.state.beer.attenuation_level}/>
+                        <input type="hidden" name="brewers_tips" value={this.state.beer.brewers_tips}/>
+                        <input type="hidden" name="contributed_by" value={this.state.beer.contributed_by}/>
+                        <input value={this.state.beer._id} type="hidden" name="_id" />
                         <label className="custom-file-upload">
                             <input type="file" name="picture"/>Upload Beer Picture
                         </label>
