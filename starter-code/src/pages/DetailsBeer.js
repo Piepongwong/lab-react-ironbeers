@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import "./DetailsBeer.css";
 import EditBeer from "./EditBeer";
+import EditPicture from "./EditPicture";
 
 
 export default class DetailsBeer extends Component {
@@ -13,10 +14,18 @@ export default class DetailsBeer extends Component {
         super(props);
         this.deleteBeer = this.deleteBeer.bind(this);
         this.showForm = this.showForm.bind(this);
+        this.showPictureForm = this.showPictureForm.bind(this);
+        this.beerUpdate = this.beerUpdate.bind(this);
+        this.beerPictureUpdate = this.beerPictureUpdate.bind(this);
+
+
+
 
         this.state = {
           beer: null,
-          formShowing: false
+          formShowing: false,
+          formPicShowing: false
+
         };
       }
     
@@ -61,6 +70,28 @@ export default class DetailsBeer extends Component {
         });
     }
 
+    showPictureForm(){
+        this.setState({
+          formPicShowing: !this.state.formPicShowing
+        });
+    }
+
+    beerUpdate(response){
+        this.showForm();
+        let beer = response;
+        this.setState({
+            beer
+        })
+    }
+
+    beerPictureUpdate(response){
+        this.showPictureForm();
+        let beer = response;
+        this.setState({
+            beer
+        })
+    }
+
 
     render() {
         if(this.state.beer === null ) return <h1>Loading...</h1>;
@@ -77,7 +108,7 @@ export default class DetailsBeer extends Component {
                             </div>
                             <div className="col-md-12 col-lg-4 d-flex justify-content-between offset-lg-4 beer-box">
                                 <h3>{this.state.beer.name}</h3>
-                                <h3 class="grey-level">{this.state.beer.attenuation_level}</h3>
+                                <h3 className="grey-level">{this.state.beer.attenuation_level}</h3>
                             </div>
                             <div className="col-md-12 col-lg-4 d-flex justify-content-between offset-lg-4 align-text-bottom beer-box ">
                                 <h4>{this.state.beer.tagline}</h4>
@@ -87,20 +118,23 @@ export default class DetailsBeer extends Component {
                                 <p>{this.state.beer.description}</p>
                             </div>
                             <div className="col-md-12 col-lg-4 offset-lg-4 beer-box">
-                                <h6 class="grey-level">{this.state.beer.contributed_by}</h6>
+                                <h6 className="grey-level">{this.state.beer.contributed_by}</h6>
                             </div>
                             <div className="col-md-12 col-lg-4 d-flex justify-content-between offset-lg-4 beer-box mb-3">
-                                <Link to={`/beers/edit/${this.state.beer._id}`}><button onClick={this.showForm} class="btn btn-info buttons">Edit Beer</button>
+                                <Link to={`/beers/edit/${this.state.beer._id}`}><button onClick={this.showForm} className="btn btn-info buttons">Edit Beer</button>
                                 </Link>
-                                
-        
-                                <Link to={`/edit-picture/${this.state.beer._id}`}><button class="btn btn-info buttons">Edit Picture</button>
+                                <Link to={`/beers/edit-picture/${this.state.beer._id}`}><button onClick={this.showPictureForm} className="btn btn-info buttons">Edit Picture</button>
                                 </Link>
-                                <button onClick={this.deleteBeer} class="btn btn-info buttons"><FontAwesomeIcon icon={faTrashAlt}/></button>
+                                <button onClick={this.deleteBeer} className="btn btn-info buttons"><FontAwesomeIcon icon={faTrashAlt}/></button>
                             </div>
-                            <div>
+                            <div className="col-md-12 col-lg-4 offset-lg-4 beer-box">
                                 {
-                                    this.state.formShowing && <Route path={`/beers/edit/:beerId`} component={EditBeer} />
+                                    this.state.formShowing && <Route path={`/beers/edit/:beerId`} render={(props) => <EditBeer {...props} beerUpdate={this.beerUpdate} />} />
+                                }
+                            </div>
+                            <div className="col-md-12 col-lg-4 offset-lg-4 beer-box">
+                                {
+                                    this.state.formPicShowing && <Route path={`/beers/edit-picture/:beerId`} render={(props) => <EditPicture {...props} beerPictureUpdate={this.beerPictureUpdate} />} />
                                 }
                             </div>
                     </div>  

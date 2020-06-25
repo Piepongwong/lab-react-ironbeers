@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from "../components/Header";
 import axios from "axios";
 
 export default class NewBeer extends Component {
@@ -41,7 +40,7 @@ export default class NewBeer extends Component {
             method: "POST"
         })
         .then((response)=>{
-            this.props.history.push(`/beers/${response.data._id}`);
+            this.props.beerPictureUpdate(response.data);
         })
         .catch((err)=>{
             this.setState({
@@ -49,6 +48,7 @@ export default class NewBeer extends Component {
             });
         });
     }
+
 
     render() {
         if(this.state.beer === null ) return <h1>Loading...</h1>;

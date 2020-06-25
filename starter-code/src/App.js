@@ -6,8 +6,7 @@ import Beers from "./pages/Beers";
 import RandomBeer from "./pages/RandomBeer";
 import NewBeer from "./pages/NewBeer";
 import DetailsBeer from "./pages/DetailsBeer";
-import EditBeer from "./pages/EditBeer";
-import EditPicture from "./pages/EditPicture";
+
 
 
 class App extends Component {
@@ -21,7 +20,6 @@ class App extends Component {
         <Route path="/random-beer" component={RandomBeer}/>
         <Route path="/new-beer" component={NewBeer}/>
         <Route path="/beers/:beerId" component={DetailsBeer}/>
-        <Route path="/edit-picture/:beerId" component={EditPicture}/>
 
       </div>
     );

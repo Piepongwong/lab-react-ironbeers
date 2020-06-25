@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from "../components/Header";
 import axios from "axios";
 
 export default class NewBeer extends Component {
@@ -40,7 +39,7 @@ export default class NewBeer extends Component {
         e.preventDefault();
         axios.post(`https://ih-beers-api.herokuapp.com/beers/edit/${this.state.beer._id}`, this.state.beer)
             .then((response)=> {
-                this.props.history.push(`/beers/${response.data._id}`);
+                this.props.beerUpdate(response.data);
             })
             .catch((err) => {
                 this.setState({
