@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Card from '../Components/Card';
+import DefaultLayout from "../layout/Default";
 
 class BeerList extends Component {
     constructor(props) {
@@ -28,27 +29,30 @@ class BeerList extends Component {
         
     }
     render() {
+
         if(this.state.beers.length === 0) return <h1>Loading...</h1>
         else{
             return (
-            <div>
-                {
-                    this.state.beers.map((beer,index)=> (
-                        <Link className="beer-card" to={`/beer-detail/${beer._id}`}>
-                            <Card
-                                key={index.toString()}
-                                image_url={beer.image_url}
-                                name={beer.name}
-                                tagline={beer.tagline}
-                                first_brewed={beer.first_brewed}
-                                description={beer.description}
-                                attenuation_level={beer.attenuation_level}
-                                contributed_by={beer.contributed_by}
-                            />
-                        </Link>
-                    ))
-                }
-            </div>
+            <DefaultLayout>
+                <div>
+                    {
+                        this.state.beers.map((beer,index)=> (
+                            <Link className="beer-card" to={`/beer-detail/${beer._id}`}>
+                                <Card
+                                    key={index.toString()}
+                                    image_url={beer.image_url}
+                                    name={beer.name}
+                                    tagline={beer.tagline}
+                                    first_brewed={beer.first_brewed}
+                                    description={beer.description}
+                                    attenuation_level={beer.attenuation_level}
+                                    contributed_by={beer.contributed_by}
+                                />
+                            </Link>
+                        ))
+                    }
+                </div>
+            </DefaultLayout>
 
         );
         }

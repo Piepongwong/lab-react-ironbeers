@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import DefaultLayout from "../layout/Default";
 
 class NewBeer extends Component {
     constructor(props) {
@@ -47,7 +48,7 @@ class NewBeer extends Component {
     
     render() {
         return (
-
+            <DefaultLayout>
             <div className="container">
                 <h1>Add New Beer</h1>
                 <form onSubmit={this.handleSubmit}>
@@ -82,6 +83,7 @@ class NewBeer extends Component {
                     <button type="submit" className="btn btn-primary">Submit</button>              
                 </form>
             </div>
+            </DefaultLayout>
         );
     }
 }

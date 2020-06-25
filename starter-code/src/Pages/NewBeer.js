@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import DefaultLayout from "../layout/Default";
 
 class NewBeer extends Component {
     constructor(props) {
@@ -40,7 +41,7 @@ class NewBeer extends Component {
     
     render() {
         return (
-
+            <DefaultLayout>
             <div className="container">
                 <h1>Add New Beer</h1>
                 <form onSubmit={this.handleSubmit} ref={this.formRef}>
@@ -76,13 +77,10 @@ class NewBeer extends Component {
                         <input type="file" name="picture"/>
                         upload beer image
                     </label>
-                    {/* <div className="custom-file-upload">
-                        <input type="file" className="custom-file-input" name="picture"/>
-                        <label className="custom-file-label" name="picture" htmlFor="picture">Choose file</label>
-                    </div> */}
                     <button type="submit" className="btn btn-primary">Submit</button>              
                 </form>
             </div>
+            </DefaultLayout>
         );
     }
 }

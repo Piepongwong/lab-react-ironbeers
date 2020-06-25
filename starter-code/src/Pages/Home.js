@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import './Home.css';
 import { Link } from 'react-router-dom';
-import LinkComponent from '../Components/LinkComponent'
+import LinkComponent from '../Components/LinkComponent';
+import DefaultLayout from "../layout/Default";
 
 class Home extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class Home extends Component {
 
   render() {
     return (
+      <DefaultLayout>
       <div className="container">
             <div className="row">
                 <div className="col-xs-12 col-sm-4 col-lg-6">
@@ -25,7 +27,8 @@ class Home extends Component {
                     <Link to={'/new-beer-without-image'}><LinkComponent name={"New Beer without image"} image={"../images/new-beer.png"}/></Link>
                 </div>               
             </div>       
-      </div>     
+      </div> 
+      </DefaultLayout>    
     );
   }
 }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Card from "../Components/Card";
 import UpdateBeer from "./UpdateBeer";
+import DefaultLayout from "../layout/Default";
 
 class BeerDetail extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class BeerDetail extends Component {
   updateHandler(id){
       debugger
       var beerId = this.props.match.params.id;
-      window.location.reload(true);
+      //window.location.reload(true);
       //this.props.history.push(`/beer-detail/${this.props.match.params.id}`);
   }
 
@@ -58,27 +59,29 @@ class BeerDetail extends Component {
       return <h1>Loading...</h1>;
     } else {
       return (
+        <DefaultLayout>
         <div>
         <Card
-          image_url={this.state.beer.image_url}
-          name={this.state.beer.name}
-          tagline={this.state.beer.tagline}
-          first_brewed={this.state.beer.first_brewed}
-          description={this.state.beer.description}
-          attenuation_level={this.state.beer.attenuation_level}
-          contributed_by={this.state.beer.contributed_by}
-        />
-            <button onClick={this.deleteHandler}>Delete this Beer</button>
-            <button onClick={this.toggleUpdateFormVisibility}>Update this Beer</button>
-            {
-                this.state.updateFormVisible &&
-                    <UpdateBeer 
-                        beer={this.state.beer}
-                        toggleUpdateFormVisibility={this.toggleUpdateFormVisibility}
-                        updateHandler={()=> {this.updateHandler(this.props.match.params.id)}} 
-                    />
-            }
-        </div>
+            image_url={this.state.beer.image_url}
+            name={this.state.beer.name}
+            tagline={this.state.beer.tagline}
+            first_brewed={this.state.beer.first_brewed}
+            description={this.state.beer.description}
+            attenuation_level={this.state.beer.attenuation_level}
+            contributed_by={this.state.beer.contributed_by}
+            />
+                <button onClick={this.deleteHandler}>Delete this Beer</button>
+                <button onClick={this.toggleUpdateFormVisibility}>Update this Beer</button>
+                {
+                    this.state.updateFormVisible &&
+                        <UpdateBeer 
+                            beer={this.state.beer}
+                            toggleUpdateFormVisibility={this.toggleUpdateFormVisibility}
+                            updateHandler={()=> {this.updateHandler(this.props.match.params.id)}} 
+                        />
+                }
+            </div>
+        </DefaultLayout>
       );
     }
   }

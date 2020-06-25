@@ -8,6 +8,7 @@ class UpdateBeer extends Component {
         super(props); 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.updateHandler = this.updateHandler.bind(this);
+        this.formRef = React.createRef();
     }
 
     state={
@@ -30,7 +31,18 @@ class UpdateBeer extends Component {
 
     updateHandler(e){
         debugger
-        e.preventDefault();
+        //e.preventDefault();
+
+        var newFormData = new FormData(this.formRef.current);
+        console.log(newFormData);
+
+        //var beerData = {...this.state.beer};
+        //beerData = newFormData;
+        //beerData.push(newFormData);
+        this.setState({
+            beer:newFormData
+        })
+        
 
         axios.post(`https://ih-beers-api.herokuapp.com/beers/edit/${this.state.beer._id}`, this.state.beer)
         .then((response=>{
@@ -50,7 +62,7 @@ class UpdateBeer extends Component {
         return (
             <div className="container">
                 <h1>Add New Beer</h1>
-                <form onSubmit={this.updateHandler}>
+                <form onSubmit={this.updateHandler} ref={this.formRef}>
                     <div className="form-group">
                         <label htmlFor="name">Name</label>
                         <input type="text" name="name" className="form-control" placeholder="Name" onChange={this.handleInputChange} value={this.state.beer.name}/>
@@ -78,6 +90,10 @@ class UpdateBeer extends Component {
                     <div className="form-group">
                         <label htmlFor="contributed_by">Contributed By</label>
                         <input type="text" name="contributed_by" className="form-control" placeholder="Contributed By" onChange={this.handleInputChange} value={this.state.beer.contributed_by}/>
+                    </div>
+                    <div className="form-group">
+                        <label className="custom-file-upload">Upload Image</label>
+                        <input type="file" name="picture"/>
                     </div>
                     <button type="submit" className="btn btn-primary">Update</button>              
                 </form>

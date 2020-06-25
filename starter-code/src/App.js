@@ -8,6 +8,8 @@ import NewBeer from './Pages/NewBeer';
 import BeerDetail from './Pages/BeerDetail';
 import NewBeerWithoutImage from './Pages/NewBeerWithoutImage';
 import UpdateBeer from './Pages/UpdateBeer';
+import Signup from './Pages/Signup';
+import Profile from './Pages/Profile';
 
 class App extends Component {
   render() {
@@ -21,6 +23,8 @@ class App extends Component {
           <Route exact path="/beer-detail/:id" component={BeerDetail} />
           <Route exact path="/new-beer-without-image" component={NewBeerWithoutImage} />
           <Route exact path="/update-beer/:id" component={UpdateBeer} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/profile" component={Profile}/>
       </div>
       
     );
