@@ -48,7 +48,8 @@ class BeerDetails extends Component {
     .then((response)=>{
       this.setState({
         beer: response.data
-      })
+      });
+      this.toggleBeerForm();
     })
 
     .catch((error)=>{
