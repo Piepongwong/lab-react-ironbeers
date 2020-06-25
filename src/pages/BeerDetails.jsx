@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './../components/Beer.scss';
+import './../App.scss';
 import { Link, Redirect } from 'react-router-dom';
 
 class BeerDetails extends Component {
@@ -96,7 +97,7 @@ class BeerDetails extends Component {
               <p>{this.state.error}</p>
             </div>
           </div>
-          <div className="edit-form">
+          <div className="edit-form form-class">
             {
               this.state.form === true ?
               <form> 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './NewBeer.scss';
+import './../App.scss';
 import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
 
@@ -52,7 +53,7 @@ class NewBeer extends Component {
 
     render() {
       return (
-        <div className="NewBeer">
+        <div className="NewBeer form-class">
           <form ref={this.formRef}> 
             <label>Name</label>
             <input type="text" name="name" onChange={this.handleChange} placeholder="The beer name.."/>

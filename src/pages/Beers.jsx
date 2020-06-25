@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import Beer from './../components/Beer'
+import Beer from './../components/Beer';
 
 class Beers extends Component {
     state = {
