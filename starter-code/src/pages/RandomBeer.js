@@ -32,15 +32,25 @@ export default class RandomBeer extends Component {
                 <div>
                     <Header />
                 </div>
-                <div>
-                    <div className="col-7">
-                        <img className="beer-image" src={this.state.beer.image_url} alt="BEER"/>
-                        <h3>{this.state.beer.name}</h3>
-                        <h3>{this.state.beer.attenuation_level}</h3>
-                        <h4>{this.state.beer.tagline}</h4>
-                        { this.state.beer.first_brewed && <h6>{this.dateFormatting(this.state.beer.first_brewed)}</h6> }
-                        <p>{this.state.beer.description}</p>
-                        <h6>{this.state.beer.contributed_by}</h6>
+                <div className="container text-left">
+                    <div className="row">
+                        <div className="col-md-12 col-lg-4 d-flex justify-content-center offset-lg-4">
+                            <img className="beer-image img-fluid m-3" src={this.state.beer.image_url} alt="BEER"/>
+                        </div>
+                        <div className="col-md-12 col-lg-4 d-flex justify-content-between offset-lg-4">
+                            <h3>{this.state.beer.name}</h3>
+                            <h3 className="grey-level">{this.state.beer.attenuation_level}</h3>
+                        </div>
+                        <div className="col-md-12 col-lg-4 d-flex justify-content-between offset-lg-4 align-text-bottom">
+                            <h4>{this.state.beer.tagline}</h4>
+                            { this.state.beer.first_brewed && <h6 >{this.dateFormatting(this.state.beer.first_brewed)}</h6> }
+                        </div>
+                        <div className="col-md-12 col-lg-4 offset-lg-4">
+                            <p>{this.state.beer.description}</p>
+                        </div>
+                        <div className="col-md-12 col-lg-4 offset-lg-4">
+                            <h6 className="grey-level">{this.state.beer.contributed_by}</h6>
+                        </div>
                     </div>  
                 </div>
             </div>

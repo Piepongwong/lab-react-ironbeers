@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from "../components/Header";
 import axios from "axios";
 import {Link} from "react-router-dom";
 import "./Beers.css";
@@ -15,22 +14,19 @@ export default class Beers extends Component {
     
     componentDidMount() {
         axios({
-            url: "https://ih-beers-api.herokuapp.com/beers",
-            method: "GET",
-            withCredentials: true
+            url: "https://ih-beers-api.herokuapp.com/user/my-beers",
+            withCredentials: true,
+            method: "GET"
         })
         .then(response => {
-            this.setState({beers: response.data})
+        this.setState({beers: response.data})
         })
     }
 
     render() {
-        if(this.state.beers.length === 0 ) return <h1>Loading...</h1>;
+        if(this.state.beers.length === 0 ) return <h1>You have only water, no beer.</h1>;
         return (
             <div>
-                <div>
-                    <Header />
-                </div>
                 <div>
                     <div className="container text-left">
                         <div className="row">

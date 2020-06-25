@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import "./Forms.css";
+import {getSingleBeer} from "../utils/beer";
 
 
-export default class NewBeer extends Component {
+export default class EditBeer extends Component {
     constructor(props){
         super(props);
         this.handleChange = this.handleChange.bind(this);
         this.postBeer = this.postBeer.bind(this);
+        
     }
 
     state = {
@@ -16,17 +18,10 @@ export default class NewBeer extends Component {
     }
 
     componentDidMount() {
-        axios.get("https://ih-beers-api.herokuapp.com/beers")
-            .then(response => {
-                let beers = response.data;
-                let beer = beers.find((oneBeer)=> oneBeer._id === this.props.match.params.beerId);
-                this.setState({beer});
-            })
-            .catch((error)=>{
-                this.setState({
-                    error
-                });
-            });
+        getSingleBeer(this.props.match.params.beerId)
+        .then(response => {
+            return this.setState({beer: response});
+        })
     }
 
     handleChange(e){

@@ -24,6 +24,7 @@ export default class NewBeer extends Component {
             headers: {
                 'content-type': 'multipart/form-data'
             },
+            withCredentials: true, 
             method: "POST"
         })
         .then((response)=>{

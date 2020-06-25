@@ -7,6 +7,8 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import "./DetailsBeer.css";
 import EditBeer from "./EditBeer";
 import EditPicture from "./EditPicture";
+import {getSingleBeer} from "../utils/beer";
+
 
 
 export default class DetailsBeer extends Component {
@@ -27,18 +29,12 @@ export default class DetailsBeer extends Component {
       }
     
       componentDidMount() {
-        axios.get("https://ih-beers-api.herokuapp.com/beers")
-            .then(response => {
-                let beers = response.data;
-                let beer = beers.find((oneBeer)=> oneBeer._id === this.props.match.params.beerId);
-                this.setState({beer});
-            })
-            .catch((error)=>{
-                this.setState({
-                    error
-                });
-            });
+        getSingleBeer(this.props.match.params.beerId)
+        .then(response => {
+            return this.setState({beer: response});
+        })
     }
+
 
     dateFormatting(date){
         let dateFormat = new Date(date);
@@ -91,7 +87,7 @@ export default class DetailsBeer extends Component {
 
 
     render() {
-        if(this.state.beer === null ) return <h1>Loading...</h1>;
+        if(this.state.beer === null) return <h1>Loading...</h1>;
 
         return (
             <div>
@@ -128,7 +124,7 @@ export default class DetailsBeer extends Component {
                     <div className="row">
                         <div className="col-md-12 col-lg-6 offset-lg-3 beer-box">
                             {
-                                this.state.formShowing && <Route path={`/beers/:beerId/edit`} render={(props) => <EditBeer {...props} beerUpdate={this.beerUpdate} />} />
+                                this.state.formShowing && <Route path={`/beers/:beerId/edit`} render={(props) => <EditBeer {...props} beer={this.state.beer} beerUpdate={this.beerUpdate} />} />
                             }
                         </div>
                         <div className="col-md-12 col-lg-4 offset-lg-4 beer-box">
