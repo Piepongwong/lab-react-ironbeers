@@ -24,7 +24,7 @@ class BeerDetails extends Component {
     .then(response => {
         this.setState({
             beer: response.data,
-            beerUpdate: response.data,
+            updateBeer: response.data,
         })
     })
   }
@@ -105,19 +105,19 @@ class BeerDetails extends Component {
               this.state.form === true ?
               <form> 
                 <label>Name</label>
-                <input type="text" name="name" value={this.state.beerUpdate.name} onChange={(e)=>this.handleChange(e)} placeholder="The beer name.."/>
+                <input type="text" name="name" value={this.state.updateBeer.name} onChange={this.handleChange} placeholder="The beer name.."/>
                 <label>Tagline</label>
-                <input type="text" name="tagline" value={this.state.beerUpdate.tagline} onChange={this.handleChange} placeholder="The tagline.."/>
+                <input type="text" name="tagline" value={this.state.updateBeer.tagline} onChange={this.handleChange} placeholder="The tagline.."/>
                 <label>Description</label>
-                <input type="text" className="description" value={this.state.beerUpdate.description} name="description" onChange={this.handleChange} placeholder="Description.."/>
+                <input type="text" className="description" value={this.state.updateBeer.description} name="description" onChange={this.handleChange} placeholder="Description.."/>
                 <label>First brewed</label>
-                <input type="text" name="first_brewed" value={this.state.beerUpdate.first_brewed} onChange={this.handleChange} placeholder="Date.. "/>
+                <input type="text" name="first_brewed" value={this.state.updateBeer.first_brewed} onChange={this.handleChange} placeholder="Date.. "/>
                 <label>Attenuation level</label>
-                <input type="text" name="attenuation_level" value={this.state.beerUpdate.attenuation_level} onChange={this.handleChange} placeholder="1 till and including 10.."/>
+                <input type="text" name="attenuation_level" value={this.state.updateBeer.attenuation_level} onChange={this.handleChange} placeholder="1 till and including 10.."/>
                 <label>Brewers tips</label>
-                <input type="text" name="brewers_tips" value={this.state.beerUpdate.brewers_tips} onChange={this.handleChange} placeholder="The tips.."/>
+                <input type="text" name="brewers_tips" value={this.state.updateBeer.brewers_tips} onChange={this.handleChange} placeholder="The tips.."/>
                 <label>Contributed by</label>
-                <input type="text" name="contributed_by" value={this.state.beerUpdate.contributed_by} onChange={this.handleChange} placeholder="Names brewers.."/>
+                <input type="text" name="contributed_by" value={this.state.updateBeer.contributed_by} onChange={this.handleChange} placeholder="Names brewers.."/>
                 <button onClick={this.editBeer} type="submit">Edit beer!</button>
                 <p>{this.state.error}</p>
               </form>:
