@@ -10,6 +10,8 @@ import NewBeerWithoutImage from './Pages/NewBeerWithoutImage';
 import UpdateBeer from './Pages/UpdateBeer';
 import Signup from './Pages/Signup';
 import Profile from './Pages/Profile';
+import Logout from './Components/Logout';
+import Login from './Pages/Login';
 
 class App extends Component {
   render() {
@@ -25,6 +27,8 @@ class App extends Component {
           <Route exact path="/update-beer/:id" component={UpdateBeer} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/profile" component={Profile}/>
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/logout" component={Logout} />
       </div>
       
     );

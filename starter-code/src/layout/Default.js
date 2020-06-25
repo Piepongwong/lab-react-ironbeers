@@ -3,7 +3,7 @@ import Navbar from "../Components/Navbar"
 
 const Default = (props) => {
     return (
-        <div className="container">
+        <div className="container-fluid">
             <Navbar />
             {props.children}
         </div>

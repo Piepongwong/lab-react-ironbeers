@@ -26,11 +26,20 @@ class BeerDetail extends Component {
         })
   }
 
-  updateHandler(id){
-      debugger
+  updateHandler(beerId){
       var beerId = this.props.match.params.id;
-      //window.location.reload(true);
-      //this.props.history.push(`/beer-detail/${this.props.match.params.id}`);
+      axios
+        .get(`https://ih-beers-api.herokuapp.com/beers/${beerId}`)
+        .then((response) => {
+            this.setState({
+            beer: response.data,
+            });
+        })
+        .catch((error) => {
+            this.setState({
+            error,
+            });
+      });
   }
 
   componentDidMount() {

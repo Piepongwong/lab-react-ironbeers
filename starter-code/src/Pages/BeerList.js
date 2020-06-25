@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Card from '../Components/Card';
 import DefaultLayout from "../layout/Default";
+import './BeerList.css';
 
 class BeerList extends Component {
     constructor(props) {
@@ -14,7 +15,6 @@ class BeerList extends Component {
     }
 
     componentDidMount(){
-        debugger
         axios.get("https://ih-beers-api.herokuapp.com/beers")
             .then(response=>{
                 this.setState({
@@ -48,7 +48,9 @@ class BeerList extends Component {
                                     attenuation_level={beer.attenuation_level}
                                     contributed_by={beer.contributed_by}
                                 />
+                                 <hr/>
                             </Link>
+                           
                         ))
                     }
                 </div>

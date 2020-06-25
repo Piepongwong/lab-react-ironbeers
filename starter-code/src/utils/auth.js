@@ -17,7 +17,41 @@ export const signup = (user)=>{
     .then((response)=> {        
         setUser(response.data);
     })
+    .catch(error=>{
+        this.setState({
+            error:error
+        })
+    })
 }
+
+export const login = (user)=>{
+    return axios({
+        method: "POST",
+        url: "login",
+        data: qs.stringify(user)
+    })
+    .then((response)=> {
+        setUser(response.data);
+    })
+    .catch(error=>{
+        this.setState({
+            error:error
+        })
+    })
+}
+
+export const logout = () =>{
+    return axios.get("/logout")
+            .then(()=>{
+                clearUser();
+            })
+    }
+
+export const clearUser = () =>{
+    window.localStorage.removeItem("user");
+}
+
+export const userIsLoggedIn = () => getUser() ? true : false;
 
 export const setUser = (user)=> {
     window.localStorage.setItem("user", JSON.stringify(user));

@@ -25,31 +25,28 @@ class UpdateBeer extends Component {
         this.setState({
             beer:beerData
         })
-
+        debugger
         console.log(this.state.beer);
     }
 
     updateHandler(e){
-        debugger
-        //e.preventDefault();
-
-        var newFormData = new FormData(this.formRef.current);
-        console.log(newFormData);
-
-        //var beerData = {...this.state.beer};
-        //beerData = newFormData;
-        //beerData.push(newFormData);
-        this.setState({
-            beer:newFormData
-        })
         
+        debugger
+        e.preventDefault();
+        var formData = new FormData(this.formRef.current);
 
-        axios.post(`https://ih-beers-api.herokuapp.com/beers/edit/${this.state.beer._id}`, this.state.beer)
+        axios({
+            url:`https://ih-beers-api.herokuapp.com/beers/edit/${this.state.beer._id}`,
+            data:formData,
+            headers: {
+                'content-type': 'multipart/form-data'
+            },
+            method:"POST"
+        })
         .then((response=>{
-            this.props.toggleUpdateFormVisibility();
             debugger
-            this.props.updateHandler(this.state.beer._id)
-            //this.props.history.push(`/beer-detail/${this.state.beer._id}`);
+            this.props.toggleUpdateFormVisibility();
+            this.props.updateHandler(response.data);
         }))
         .catch((error)=>{
             this.setState({
@@ -65,31 +62,31 @@ class UpdateBeer extends Component {
                 <form onSubmit={this.updateHandler} ref={this.formRef}>
                     <div className="form-group">
                         <label htmlFor="name">Name</label>
-                        <input type="text" name="name" className="form-control" placeholder="Name" onChange={this.handleInputChange} value={this.state.beer.name}/>
+                        <input type="text" name="name" className="form-control" onChange={this.handleInputChange} placeholder="Name" value={this.state.beer.name}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="tagline">Tagline</label>
-                        <input type="text" name="tagline" className="form-control" placeholder="Tagline" onChange={this.handleInputChange} value={this.state.beer.tagline}/>
+                        <input type="text" name="tagline" className="form-control" onChange={this.handleInputChange} placeholder="Tagline" value={this.state.beer.tagline}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="description">Description</label>
-                        <input type="text" name="description" className="form-control" placeholder="Description" onChange={this.handleInputChange} value={this.state.beer.description}/>
+                        <input type="text" name="description" className="form-control" onChange={this.handleInputChange} placeholder="Description" value={this.state.beer.description}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="first_brewed">First Brewed</label>
-                        <input type="date" name="first_brewed" className="form-control" placeholder="First Brewed" onChange={this.handleInputChange} value={this.state.beer.first_brewed}/>
+                        <input type="date" name="first_brewed" className="form-control" onChange={this.handleInputChange} placeholder="First Brewed" value={parseDateTimeToYYYYMMDD(this.state.beer.first_brewed)}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="brewers_tips">Brewer Tips</label>
-                        <input type="text" name="brewers_tips" className="form-control" placeholder="Brewer's Tips" onChange={this.handleInputChange} value={this.state.beer.brewers_tips}/>
+                        <input type="text" name="brewers_tips" className="form-control" onChange={this.handleInputChange} placeholder="Brewer's Tips" value={this.state.beer.brewers_tips}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="attenuation_level">Attentuation Level</label>
-                        <input type="number" name="attenuation_level" className="form-control" placeholder="Attentuation Level" onChange={this.handleInputChange} value={this.state.beer.attenuation_level}/>
+                        <input type="number" name="attenuation_level" className="form-control" onChange={this.handleInputChange} placeholder="Attentuation Level" value={this.state.beer.attenuation_level}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="contributed_by">Contributed By</label>
-                        <input type="text" name="contributed_by" className="form-control" placeholder="Contributed By" onChange={this.handleInputChange} value={this.state.beer.contributed_by}/>
+                        <input type="text" name="contributed_by" className="form-control" onChange={this.handleInputChange} placeholder="Contributed By" value={this.state.beer.contributed_by}/>
                     </div>
                     <div className="form-group">
                         <label className="custom-file-upload">Upload Image</label>
@@ -103,3 +100,16 @@ class UpdateBeer extends Component {
 }
 
 export default UpdateBeer;
+
+function parseDateTimeToYYYYMMDD(dateTimeString){
+    debugger
+    var inputDate = new Date(dateTimeString)
+    let date = inputDate.getDate();
+    let year = inputDate.getFullYear();
+    let month = inputDate.getMonth()+1;
+    month = month<9 ? `0${month}`:month;
+    date = date<9 ? `0${date}`:date;
+    console.log(`${year}-${month}-${date}`);
+
+    return `${year}-${month}-${date}`;
+}

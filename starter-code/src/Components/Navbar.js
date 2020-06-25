@@ -1,22 +1,25 @@
 import React from 'react';
 import {getUser} from '../utils/auth'
+import { faHome, fas, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Navbar(props) {
   let user = getUser();
 
   return (
-    <nav className="navbar navbar-dark bg-primary mb-3">
+    <nav className="navbar navbar-dark bg-dark mb-3 justify-content-center">
       {
         user ? 
-          <div className="container-fluid">
-            <a className="navbar-brand" href="/">Home</a>
+          <div>
+            <a className="navbar-brand" href="/"><FontAwesomeIcon icon={faHome} /></a>
             <a className="navbar-brand" href="/logout">Logout</a>
             <a className="navbar-brand" href = "/profile">Profile</a>
           </div>
           :
-          <div className="container">
-            <a className="navbar-brand" href="/">Home</a>
-            <a className="navbar-brand" href="/signup">Signup</a>
+          <div>
+            <a className="navbar-brand" href="/"><FontAwesomeIcon icon={faHome} /></a>
+              <a className="navbar-brand" href="/signup"><FontAwesomeIcon icon={fas, faUserPlus} /></a>
+              <a className="navbar-brand" href="/login">Login</a>
           </div>
       }
 
