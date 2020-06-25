@@ -43,11 +43,9 @@ class BeerDetails extends Component {
   }
 
   editBeer(event){
-    debugger
     event.preventDefault();
     axios.post(`https://ih-beers-api.herokuapp.com/beers/edit/${this.props.match.params.id}`, this.state.updateBeer)
     .then((response)=>{
-      debugger
       this.setState({
         beer: response.data
       })
@@ -55,7 +53,6 @@ class BeerDetails extends Component {
 
     .catch((error)=>{
       console.log(error);
-      debugger
       this.setState({
         error: error.response.data.message
       })
@@ -69,7 +66,6 @@ class BeerDetails extends Component {
   }
 
   handleChange(event){
-    debugger
     let newBeer = {...this.state.updateBeer};
     newBeer[event.target.name] = event.target.value;
     this.setState({
@@ -78,7 +74,6 @@ class BeerDetails extends Component {
   }
 
   render() {
-    debugger
     if(this.state.beer.length === 0){
       return <h2>Loading...</h2>
     } else{
