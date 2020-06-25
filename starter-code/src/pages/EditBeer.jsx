@@ -64,7 +64,7 @@ class EditBeer extends Component {
                         </div>
                         <div className="form-group">
                             <label for="first_brewed">First brewed</label>
-                            <input className="form-control" type="date" onChange={this.handleChange} name="first_brewed" value={this.state.beer.first_brewed} placeholder="First brewed" />
+                            <input className="form-control" type="text" onChange={this.handleChange} name="first_brewed" value={this.state.beer.first_brewed} placeholder="First brewed" />
                         </div>
                         <div className="form-group">
                             <label for="brewers_tips">Brewers tips</label>
@@ -81,6 +81,7 @@ class EditBeer extends Component {
 
                         <button onClick={this.editBeer} type="submit">Submit</button>
                     </form>
+                    {this.state.error && <p>{this.state.error}</p>}
                 </div>
             </Default>
         )

@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'; 
 import axios from 'axios';
 import Default from '../layouts/Default';
+import SearchBeer from './SearchBeer';
 
 class Beers extends Component {
+    constructor(props){
+        super(props);
+        this.searchHandler = this.searchHandler.bind(this);
+    }
     state = {
         beers: [],
+        filteredBeers: [],
         error: null
     }
 
@@ -13,19 +19,40 @@ class Beers extends Component {
         axios.get("https://ih-beers-api.herokuapp.com/beers")
         .then(response => {
             let beers = response.data;
-            this.setState({beers});
+            let filteredBeers = response.data;
+            this.setState({beers, filteredBeers});
         })
         .catch (error => {
             this.setState({error});
         })
     }
 
+    searchHandler(search) {
+        const beerCopy = this.state.beers.filter(beer => beer.name.toLowerCase().includes(search.toLowerCase()));
+        this.setState({
+            filteredBeers: beerCopy
+        })
+    }
+
+    // searchHandler(search) {
+    //     debugger
+    //     axios.get(`https://ih-beers-api.herokuapp.com/beers/search?q=${search}`)
+    //     .then(response => {
+    //         debugger
+    //         console.log(response)npm
+    //     })
+    //     .catch (error => {
+    //         this.setState({error});
+    //     })
+    // }
+
     render() {
         return(
             <Default>
+                <SearchBeer searching={this.searchHandler}/>
                 <div className="beers">
                     {
-                        this.state.beers.map(beer =>
+                        this.state.filteredBeers.map(beer =>
                             <div className="container">
                                 <Link className="row" to={`/beers/detail/${beer._id}`}>
                                     <div className="col-2">
