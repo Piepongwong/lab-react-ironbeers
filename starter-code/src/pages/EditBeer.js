@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import "./Forms.css";
+
 
 export default class NewBeer extends Component {
     constructor(props){
@@ -40,6 +42,7 @@ export default class NewBeer extends Component {
         axios.post(`https://ih-beers-api.herokuapp.com/beers/edit/${this.state.beer._id}`, this.state.beer)
             .then((response)=> {
                 this.props.beerUpdate(response.data);
+                this.props.history.push(`/beers/${response.data._id}`);
             })
             .catch((err) => {
                 this.setState({
@@ -52,22 +55,42 @@ export default class NewBeer extends Component {
         if(this.state.beer === null ) return <h1>Loading...</h1>;
         return (
             <div>
-                <div className="new-beer">
-                    <form onSubmit={this.postBeer}>
-                        <input type="text" onChange={this.handleChange} name="name" placeholder="Beer Name" value={this.state.beer.name}/>
-                        <input type="text" onChange={this.handleChange} name="tagline" placeholder="Tagline" value={this.state.beer.tagline}/>
-                        <input type="text" onChange={this.handleChange} name="description" placeholder="Description" value={this.state.beer.description}/>
-                        <input type="text" onChange={this.handleChange} name="first_brewed" placeholder="First Brewed" value={this.state.beer.first_brewed}/>
-                        <input type="text" onChange={this.handleChange} name="attenuation_level" placeholder="Attenuation Level" value={this.state.beer.attenuation_level}/>
-                        <input type="text" onChange={this.handleChange} name="brewers_tips" placeholder="Brewers Tips" value={this.state.beer.brewers_tips}/>
-                        <input type="text" onChange={this.handleChange} name="contributed_by" placeholder="Contributed By" value={this.state.beer.contributed_by}/>
-                        <input value={this.state.beer._id} type="hidden" name="_id" />
-                        <button type="submit">Submit</button>
-                    </form>
-                    {
-                        this.state.error && <p>{this.state.error}</p>
-                    }
-                </div>
+                <form onSubmit={this.postBeer} className="p-3">
+                    <div className="form-group">
+                        <label className="form-label" for="Name">Name</label>
+                        <input type="text"  className="form-control form-box" name="name" onChange={this.handleChange} value={this.state.beer.name}/>
+                    </div>
+                    <div className="form-group">
+                        <label className="form-label" for="Name">Tagline</label>
+                        <input type="text"  className="form-control form-box" name="tagline" onChange={this.handleChange} value={this.state.beer.tagline}/>
+                    </div>
+                    <div className="form-group">
+                        <label className="form-label" for="Name">Description</label>
+                        <textarea class="form-control form-box" name="description" rows="3" onChange={this.handleChange} value={this.state.beer.description}></textarea>
+                    </div>
+                    <div className="form-group">
+                        <label className="form-label" for="Name">First Brewed</label>
+                        <input type="text"  className="form-control form-box" name="first_brewed" onChange={this.handleChange} value={this.state.beer.first_brewed}/>
+                    </div>
+                    <div className="form-group">
+                        <label className="form-label" for="Name">Attenuation Level</label>
+                        <input type="text"  className="form-control form-box" name="attenuation_level" onChange={this.handleChange} value={this.state.beer.attenuation_level}/>
+                    </div>
+                    <div className="form-group">
+                        <label className="form-label" for="Name">Brewers Tips</label>
+                        <input type="text"  className="form-control form-box" name="brewers_tips" onChange={this.handleChange} value={this.state.beer.brewers_tips}/>
+                    </div>
+
+                    <div className="form-group">
+                        <label className="form-label" for="Name">Contributed By</label>
+                        <input type="text"  className="form-control form-box" name="contributed_by" onChange={this.handleChange} value={this.state.beer.contributed_by}/>
+                    </div>
+
+                    <button className="btn btn-info" type="submit">Edit Beer</button>
+                </form>
+                {
+                    this.state.error && <p>{this.state.error}</p>
+                }
             </div>
         )
     }
