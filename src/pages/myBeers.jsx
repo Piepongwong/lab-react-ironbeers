@@ -3,10 +3,6 @@ import axios from 'axios';
 import Beer from './../components/Beer';
 
 class MyBeers extends Component {
-  constructor(props) {
-    super(props)
-  };
-
   state = {
     myBeers: [],
     error: null
