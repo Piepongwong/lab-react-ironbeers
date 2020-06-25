@@ -4,14 +4,6 @@ import './Profile.scss'
 
 
 class Profile extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-         
-    }
-  }
-
   render() {
     let user = getUser();
     if(user === null){
@@ -42,7 +34,6 @@ class Profile extends Component {
         </div>
       )
     }
-    
   }
 }
 

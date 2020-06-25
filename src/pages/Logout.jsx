@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import {logout} from './../utils/auth'
-import { Link, Route, Redirect } from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
 class Logout extends Component {
+
+  state = {
+    
+  }
 
   componentDidMount(){
     logout()
@@ -11,6 +15,9 @@ class Logout extends Component {
     })
     .catch((error)=>{
       console.log(error);
+      this.setState({
+        error: error.response.data.message
+      })
     })
   }
 

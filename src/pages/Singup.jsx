@@ -29,8 +29,11 @@ class Singup extends Component {
             */
         })
     })
-    .catch((error)=> {
-        this.setState({error: error.response && error.response.data})
+    .catch((error)=>{
+      console.log(error);
+      this.setState({
+        error: error.response.data.message
+      })
     })
   }
 

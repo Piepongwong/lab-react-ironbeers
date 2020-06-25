@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './NewBeer.scss';
 import './../App.scss';
 import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class NewBeer extends Component {
     constructor(props) {
@@ -17,6 +17,7 @@ class NewBeer extends Component {
       error: null
     }
 
+    // Code to add a beer without a file
     // axios.post("https://ih-beers-api.herokuapp.com/beers/new", theNewBeer)
     //   .then((response)=>{
     //     debugger
@@ -36,6 +37,7 @@ class NewBeer extends Component {
         headers: {
           'content-typ': 'multipart/form-data'
         },
+        withCredentials: true,
         method: "post"
       })
       .then((response)=>{

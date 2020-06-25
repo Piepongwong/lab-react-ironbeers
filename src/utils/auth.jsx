@@ -53,7 +53,7 @@ export const setUser = (user)=> {
   window.localStorage.setItem("user", JSON.stringify(user));
 }
 
-export const getUser = (user)=> {
+export const getUser = () => {
   /*
       a function that gets the user out of the localstorage and 
       turns it intor a js object again
