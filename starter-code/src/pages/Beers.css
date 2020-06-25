@@ -24,3 +24,7 @@
 .list-text h3:hover {
     text-decoration: underline black;
 }
+
+.form-box {
+    border-radius: 10px !important;
+}
