@@ -9,6 +9,7 @@ import BeerDetails from './pages/BeerDetails'
 import Signup from './pages/Singup'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
+import Logout from './pages/Logout'
 import { Route } from 'react-router-dom';
 
 class App extends Component {
@@ -24,6 +25,7 @@ class App extends Component {
         <Route path='/signup' component={Signup}/>
         <Route path='/login' component={Login}/>
         <Route path='/profile' component={Profile}/>
+        <Route path='/logout' component={Logout}/>
 			</div>
 		);
 	}

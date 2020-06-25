@@ -22,20 +22,22 @@ class Profile extends Component {
           
           <h3>Your profile page</h3>
           <table>
-            <tr>
-              <td><strong>Username:</strong></td>
-              <td>{user.username}</td>
-            </tr>
-              <td><strong>Firstname:</strong></td>
-              <td>{user.firstname}</td>
-            <tr>
-              <td><strong>Lastname:</strong></td>
-              <td>{user.lastname}</td>         
-            </tr>
-            <tr>       
-              <td><strong>E-mail address:</strong></td>
-              <td>{user.email}</td>
-            </tr>
+            <tbody>
+              <tr>
+                <td><strong>Username:</strong></td>
+                <td>{user.username}</td>
+              </tr>
+                <td><strong>Firstname:</strong></td>
+                <td>{user.firstname}</td>
+              <tr>
+                <td><strong>Lastname:</strong></td>
+                <td>{user.lastname}</td>         
+              </tr>
+              <tr>       
+                <td><strong>E-mail address:</strong></td>
+                <td>{user.email}</td>
+              </tr>
+            </tbody>
           </table>
         </div>
       )

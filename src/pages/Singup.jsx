@@ -22,7 +22,7 @@ class Singup extends Component {
         this.setState({
             error: null
         }, ()=> {
-            this.props.history.push("/user/profile") 
+            this.props.history.push("/profile") 
             /* 
                 we're redirecting programatically using the history props that react-router adds to every
                 component rendered through <Route />

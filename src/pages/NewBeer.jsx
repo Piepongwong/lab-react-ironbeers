@@ -17,6 +17,15 @@ class NewBeer extends Component {
       error: null
     }
 
+    // axios.post("https://ih-beers-api.herokuapp.com/beers/new", theNewBeer)
+    //   .then((response)=>{
+    //     debugger
+    //     this.setState({
+    //       beer: {}
+    //     })
+    //     this.props.history.push(`/beers/${response.data._id}`); 
+    //   })
+
     postTheBeer(event){
       event.preventDefault();
       var beerData = new FormData(this.formRef.current);

@@ -4,8 +4,17 @@ import { Link } from 'react-router-dom';
 
 class Beer extends Component {
   state = {
-         
   }
+
+  
+  // axios.post("https://ih-beers-api.herokuapp.com/beers/new", theNewBeer)
+    //   .then((response)=>{
+    //     debugger
+    //     this.setState({
+    //       beer: {}
+    //     })
+    //     this.props.history.push(`/beers/${response.data._id}`); 
+    //   })
 
   render() {
     return (
