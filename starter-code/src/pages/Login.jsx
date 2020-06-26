@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
-import qs from "qs"; 
 import Default from '../layouts/Default';
 import { login } from "../utils/auth";
 
@@ -35,7 +33,6 @@ class Signup extends Component {
             console.log(err)
         })
     }
-
 
     render() {
         return (

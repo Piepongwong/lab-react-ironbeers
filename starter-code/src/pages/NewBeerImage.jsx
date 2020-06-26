@@ -13,23 +13,21 @@ class NewBeer extends Component {
 
     postBeer(e) {
         e.preventDefault();
-        debugger
         //https://developer.mozilla.org/en-US/docs/Web/API/FormData
         var formData = new FormData(this.formRef.current);
         //https://github.com/axios/axios#axiosposturl-data-config
         const options = {
             url: 'https://ih-beers-api.herokuapp.com/beers/new',
             method: 'POST',
+            withCredentials: true,
             headers: { 'content-type': 'multipart/form-data' },
             data: formData
         };
         axios(options)
         .then(response => {
-            debugger
             this.props.history.push(`/beers/detail/${response.data._id}`)
         })
         .catch(err => {
-            debugger
             this.setState({
                 error: err.response.data.message
             })

@@ -17,7 +17,6 @@ class Profile extends Component {
     }
 
     toggleForm(){
-        debugger
         this.setState({
             form: !this.state.form
         });
@@ -32,7 +31,6 @@ class Profile extends Component {
                 <p><strong>Email:</strong>{this.user.email}</p>
                 <Link to={`/user/profile/edit`} onClick={this.toggleForm}>Edit profile</Link>
                 {this.state.form && <Route path="/user/profile/edit" render={(props) => <EditProfile {...props} editProfile={this.toggleForm} />} />}
-                
             </Default>
         )
     }

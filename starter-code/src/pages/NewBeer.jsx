@@ -8,6 +8,7 @@ class NewBeer extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.postBeer = this.postBeer.bind(this);
     }
+    
     state = {
         beer: {},
         error: null
@@ -21,7 +22,12 @@ class NewBeer extends Component {
 
     postBeer(e) {
         e.preventDefault();
-        axios.post("https://ih-beers-api.herokuapp.com/beers/new", this.state.beer)
+        axios({
+            url: "https://ih-beers-api.herokuapp.com/beers/new",
+            withCredentials: true,
+            data: this.state.beer,
+            method: "POST"
+        })
         .then(response => {
             this.props.history.push(`/beers/detail/${response.data._id}`)
         })

@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
-import qs from "qs"; 
 import Default from '../layouts/Default';
 import { signup } from "../utils/auth";
 
@@ -32,7 +30,6 @@ class Signup extends Component {
             this.setState({error})
         })
     }
-
 
     render() {
         return (

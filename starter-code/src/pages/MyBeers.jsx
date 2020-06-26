@@ -2,37 +2,21 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'; 
 import axios from 'axios';
 import Default from '../layouts/Default';
-import SearchBeer from './SearchBeer';
 
-class Beers extends Component {
-    constructor(props){
-        super(props);
-        this.searchHandler = this.searchHandler.bind(this);
-    }
-
+class MyBeers extends Component {
     state = {
         beers: [],
-        filteredBeers: [],
         error: null
     }
 
     componentDidMount(){
-        axios.get("https://ih-beers-api.herokuapp.com/beers")
-        .then(response => {
-            let beers = response.data;
-            let filteredBeers = response.data;
-            this.setState({beers, filteredBeers});
+        axios({
+            url: "https://ih-beers-api.herokuapp.com/user/my-beers",
+            withCredentials: true,
+            method: "GET"
         })
-        .catch (error => {
-            this.setState({error});
-        })
-    }
-
-    searchHandler(search) {
-        if (search.length === 0) this.setState({filteredBeers: this.state.beers});
-        axios.get(`https://ih-beers-api.herokuapp.com/beers/search?q=${search}`)
         .then(response => {
-            this.setState({filteredBeers: response.data});
+            this.setState({beers: response.data});
         })
         .catch (error => {
             this.setState({error});
@@ -40,12 +24,12 @@ class Beers extends Component {
     }
 
     render() {
+        if (this.state.beers.length === 0) return (<h1>No beers here, go and create your dream one!</h1>)
         return(
             <Default>
-                <SearchBeer searching={this.searchHandler}/>
                 <div className="beers">
                     {
-                        this.state.filteredBeers.map(beer =>
+                        this.state.beers.map(beer =>
                             <div className="container">
                                 <Link className="row" to={`/beers/detail/${beer._id}`}>
                                     <div className="col-2">
@@ -60,11 +44,11 @@ class Beers extends Component {
                                 <hr/>
                             </div>
                         )
-                    }
+                    } 
                 </div>
             </Default>
         )
     }
 }
 
-export default Beers;
+export default MyBeers;

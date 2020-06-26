@@ -45,7 +45,6 @@ class BeerDetail extends Component {
                     />
                 </div>
             </Default>
-            
         )
     }
 }

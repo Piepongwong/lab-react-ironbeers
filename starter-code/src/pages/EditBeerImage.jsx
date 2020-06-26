@@ -29,7 +29,6 @@ class EditBeerImage extends Component {
     }
 
     editBeerImage(e) {
-        debugger
         e.preventDefault();
         //https://developer.mozilla.org/en-US/docs/Web/API/FormData
         var formData = new FormData(this.formRef.current);

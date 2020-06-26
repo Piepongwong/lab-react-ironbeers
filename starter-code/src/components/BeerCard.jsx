@@ -28,7 +28,6 @@ const beerCard = (props) => {
             <button onClick={props.clickToDelete}>Delete</button>
             <button><Link to={`/beers/edit/${props.id}`}>Edit</Link></button>
             <button><Link to={`/beers/edit-image/${props.id}`}>Edit image</Link></button>
-
         </div>
     )
 };

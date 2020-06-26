@@ -8,6 +8,7 @@ class EditBeer extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.editBeer = this.editBeer.bind(this);
     }
+    
     state = {
         beer: {},
         error: null

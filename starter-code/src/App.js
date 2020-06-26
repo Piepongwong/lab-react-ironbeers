@@ -16,6 +16,7 @@ import Login from './pages/Login'
 import Logout from './pages/Logout'
 import Profile from './pages/Profile'
 import PageNotFound from './pages/PageNotFound'
+import MyBeers from './pages/MyBeers'
 
 class App extends Component {
   render() {
@@ -27,6 +28,7 @@ class App extends Component {
           <Route exact path="/beers/random" component={RandomBeer} />
           <Route exact path="/beers/new" component={NewBeerImage} />
           <Route exact path="/beers/detail/:id" component={BeerDetail} />
+          <Route exact path="/beers/my-beers" component={MyBeers} />
           <Route exact path="/beers/edit/:id" component={EditBeer} />
           <Route exact path="/beers/edit-image/:id" component={EditBeerImage} />
           <Route exact path="/user/sign-up" component={Signup} />

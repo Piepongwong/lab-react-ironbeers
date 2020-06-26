@@ -21,29 +21,23 @@ class EditProfile extends Component {
     }
 
     editProfile(e) {
-        debugger
-        let copyUser = {...this.state.user}
-        delete copyUser.id
         e.preventDefault();
         axios({
             url: `https://ih-beers-api.herokuapp.com/user/profile/edit`,
-            data: qs.stringify(copyUser),
+            data: qs.stringify(this.state.user),
             withCredentials: true,
             method: "POST"
         })
         .then(() => {
-            debugger
             this.props.editProfile();
             this.props.history.push(`/user/profile`);
         })
         .catch(err => {
-            debugger
             console.log(err)
         })
     }
 
     render() {
-        // if (this.state.user.length === 0) return (<h1>Loading...</h1>)
         return(
             <div className="new-beer">
                 <form className="container">
@@ -72,7 +66,7 @@ class EditProfile extends Component {
                 </form>
                 {this.state.error && <p>{this.state.error}</p>}
             </div>
-    )
+        )
     }
 }
 

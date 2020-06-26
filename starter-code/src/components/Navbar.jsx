@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {getUser} from '../utils/auth';
+import { getUser } from '../utils/auth';
 
 function Navbar() {
   let user = getUser();
@@ -12,6 +12,7 @@ function Navbar() {
           <Link className="navbar-brand" to='/'>Home</Link>
           <Link className="navbar-brand" to='/beers'>Beers</Link>
           <Link className="navbar-brand" to='/beers/random'>Random beer</Link>
+          <Link className="navbar-brand" to='/beers/my-beers'>My beers</Link>
           <Link className="navbar-brand" to='/beers/new'>New beer</Link>
           <Link className="navbar-brand" to='/user/profile'>Welcome {user.username}</Link>
           <Link className="navbar-brand" to='/user/logout'>Logout</Link>
@@ -32,9 +33,6 @@ function Navbar() {
       </nav>
     )
   }
-
-
- 
 }
 
 export default Navbar;
