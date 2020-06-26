@@ -57,44 +57,51 @@ class UpdateBeer extends Component {
 
     render() {
         return (
-            <div className="container">
-                <h1>Add New Beer</h1>
-                <form onSubmit={this.updateHandler} ref={this.formRef}>
-                    <div className="form-group">
-                        <label htmlFor="name">Name</label>
-                        <input type="text" name="name" className="form-control" onChange={this.handleInputChange} placeholder="Name" value={this.state.beer.name}/>
+            <div className="row justify-content-center">
+                <div className="col-md-6 py-2">
+                <div className="card mr-auto justify-content-center">
+                <div className="card-header"><h3 className="mb-0 text-center">Add New Beer</h3></div> 
+                <div className="card-body">
+                    <form onSubmit={this.updateHandler} className="form" ref={this.formRef}>
+                        <div className="form-group">
+                            <label htmlFor="name">Name</label>
+                            <input type="text" name="name" className="form-control" onChange={this.handleInputChange} placeholder="Name" value={this.state.beer.name}/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="tagline">Tagline</label>
+                            <input type="text" name="tagline" className="form-control" onChange={this.handleInputChange} placeholder="Tagline" value={this.state.beer.tagline}/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="description">Description</label>
+                            <input type="text" name="description" className="form-control" onChange={this.handleInputChange} placeholder="Description" value={this.state.beer.description}/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="first_brewed">First Brewed</label>
+                            <input type="date" name="first_brewed" className="form-control" onChange={this.handleInputChange} placeholder="First Brewed" value={parseDateTimeToYYYYMMDD(this.state.beer.first_brewed)}/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="brewers_tips">Brewer Tips</label>
+                            <input type="text" name="brewers_tips" className="form-control" onChange={this.handleInputChange} placeholder="Brewer's Tips" value={this.state.beer.brewers_tips}/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="attenuation_level">Attentuation Level</label>
+                            <input type="number" name="attenuation_level" className="form-control" onChange={this.handleInputChange} placeholder="Attentuation Level" value={this.state.beer.attenuation_level}/>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="contributed_by">Contributed By</label>
+                            <input type="text" name="contributed_by" className="form-control" onChange={this.handleInputChange} placeholder="Contributed By" value={this.state.beer.contributed_by}/>
+                        </div>
+                        <div className="form-group">
+                            <label className="custom-file-upload">Upload Image</label>
+                            <input type="file" name="picture"/>
+                        </div>
+                        <button type="submit" className="btn btn-primary">Update</button>              
+                    </form>
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="tagline">Tagline</label>
-                        <input type="text" name="tagline" className="form-control" onChange={this.handleInputChange} placeholder="Tagline" value={this.state.beer.tagline}/>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="description">Description</label>
-                        <input type="text" name="description" className="form-control" onChange={this.handleInputChange} placeholder="Description" value={this.state.beer.description}/>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="first_brewed">First Brewed</label>
-                        <input type="date" name="first_brewed" className="form-control" onChange={this.handleInputChange} placeholder="First Brewed" value={parseDateTimeToYYYYMMDD(this.state.beer.first_brewed)}/>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="brewers_tips">Brewer Tips</label>
-                        <input type="text" name="brewers_tips" className="form-control" onChange={this.handleInputChange} placeholder="Brewer's Tips" value={this.state.beer.brewers_tips}/>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="attenuation_level">Attentuation Level</label>
-                        <input type="number" name="attenuation_level" className="form-control" onChange={this.handleInputChange} placeholder="Attentuation Level" value={this.state.beer.attenuation_level}/>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="contributed_by">Contributed By</label>
-                        <input type="text" name="contributed_by" className="form-control" onChange={this.handleInputChange} placeholder="Contributed By" value={this.state.beer.contributed_by}/>
-                    </div>
-                    <div className="form-group">
-                        <label className="custom-file-upload">Upload Image</label>
-                        <input type="file" name="picture"/>
-                    </div>
-                    <button type="submit" className="btn btn-primary">Update</button>              
-                </form>
+                </div>
+                </div>
             </div>
+
         );
     }
 }

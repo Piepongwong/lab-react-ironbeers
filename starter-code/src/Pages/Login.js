@@ -44,8 +44,8 @@ class Signup extends Component {
     
     render() {
         return (
-            <div className="container">
-            <h1>Login</h1>
+            <div className="container justify-content-center">
+            <h1 className="text-center">Login</h1>
             <form onSubmit={this.handleLogin}>
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
