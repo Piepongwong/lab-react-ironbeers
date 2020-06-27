@@ -34,7 +34,7 @@ export default class EditProfile extends Component {
         e.preventDefault();
 
         axios({
-            url: `https://ih-beers-api.herokuapp.com/user/profile/edit`,
+            url: `https://ih-beers-api.herokuapp.com/user/profile/edit/password`,
             data: qs.stringify(this.state.user),
             withCredentials: true,
             method: "POST"
@@ -59,22 +59,22 @@ export default class EditProfile extends Component {
                     <label className="form-label" for="Username">Username</label>
                         <input type="text"  className="form-control form-box" name="username" onChange={this.handleChange} value={this.state.user.username}/>
                     </div> */}
-                    <div className="form-group">
+                    {/* <div className="form-group">
                     <label className="form-label" for="Firstname">Firstname</label>
                         <input type="text"  className="form-control form-box" name="firstname" onChange={this.handleChange} value={this.state.user.firstname}/>
                     </div>
                     <div className="form-group">
                     <label className="form-label" for="Lastname">Lastname</label>
                         <input type="text" class="form-control form-box" name="lastname" onChange={this.handleChange} value={this.state.user.lastname} />
-                    </div>
+                    </div> */}
                     {/* <div className="form-group">
                         <label className="form-label" for="Email">Email</label>
                         <input type="text"  className="form-control form-box" name="email" onChange={this.handleChange} value={this.state.user.email}/>
-                    </div>
+                    </div> */}
                     <div className="form-group">
                     <label className="form-label" for="Password">Password</label>
                         <input type="password"  className="form-control form-box" name="password" onChange={this.handleChange} value={this.state.user.password}/>
-                    </div> */}
+                    </div>
                     {/* <input type="hidden" name="name" value={this.state.user.username}/> */}
                     <input type="hidden" name="name" value={this.state.user._id}/>
 
