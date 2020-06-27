@@ -1,0 +1,30 @@
+.beer-image {
+    max-height: 200px;
+}
+
+.list-text {
+    display: inline-block;
+    align-self: center;
+}
+
+.list-text h3, h6 {
+    color: black;
+    font-weight: 400;
+}
+
+.list-text h4 {
+    color: gray;
+    font-weight: 400;
+}
+
+.link-group:hover {
+    text-decoration: none;
+}
+
+.list-text h3:hover {
+    text-decoration: underline black;
+}
+
+.form-box {
+    border-radius: 10px !important;
+}

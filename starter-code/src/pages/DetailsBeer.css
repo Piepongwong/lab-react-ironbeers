@@ -1,0 +1,28 @@
+.beer-image {
+    max-height: 200px;
+}
+
+.beer-box h3 {
+    font-weight: 400;
+}
+
+.beer-box h4 {
+    color: gray;
+    font-weight: 400;
+}
+
+.beer-box h6 {
+    font-weight: 600;
+}
+
+.grey-level {
+    color: gray;
+}
+
+.beer-box p {
+    font-weight: 600;
+}
+
+.buttons {
+    width: 110px;
+}
