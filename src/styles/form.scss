@@ -1,0 +1,29 @@
+.form{ 
+    form{
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        margin-top: 5rem;
+    input{
+        align-self: center;
+        padding: 1rem;
+        margin-top: 2rem;
+        width : 50%;
+        border: 1px grey solid;
+        border-radius: 30px;
+        background-color: white;
+    }
+    button{
+        align-self: center;
+        padding: 1rem;
+        width : 20%;
+        margin-top: 1rem;
+        color: white;
+        border: none;
+        border-radius: 30px;
+        background-color: rgb(17, 120, 189);
+    }
+}
+}

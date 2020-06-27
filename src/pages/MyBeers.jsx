@@ -11,8 +11,9 @@ class Beers extends Component {
     }
 
     componentDidMount() {
-        axios.get("https://ih-beers-api.herokuapp.com/beers")
+        axios.get("https://ih-beers-api.herokuapp.com/user/my-beers", {withCredentials : true})
         .then(response => {
+            console.log(response)
             this.setState({beers: response.data})
         })
     }

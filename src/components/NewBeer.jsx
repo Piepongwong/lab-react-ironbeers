@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import '../styles/newBeer.scss'
+import '../styles/form.scss'
+import { getUser } from '../utils/auth';
 
 class NewBeer extends Component {
     constructor(props){
         super(props)
+        this.formRef = React.createRef();
+        this.handleAddBeerSubmit = this.handleAddBeerSubmit.bind(this)
         this.state = {
             beer: {},
             error : null
@@ -20,14 +23,18 @@ class NewBeer extends Component {
     }
 
       handleAddBeerSubmit=(e)=>{
-          console.log();
-          
+          console.log(this.state.beer);
           debugger
+          var beerData= new FormData(this.formRef.current);
             e.preventDefault()
             axios({
                 method: "POST",
                 url: "https://ih-beers-api.herokuapp.com/beers/new",
-                data: this.state.beer,
+                withCredentials: true,
+                data: beerData,
+                headers : {
+                    'content-typ' : 'multipart/form-data'
+                }
             })
             .then((response)=> {
                 this.props.history.push(`/beercard/${response.data._id}`)
@@ -39,15 +46,16 @@ class NewBeer extends Component {
 
     render() {
         return (
-            <div className = "form-div">
-                <form onSubmit={(e) => this.handleAddBeerSubmit(e)}>
+            <div className = "form">
+                <form onSubmit={(e) => this.handleAddBeerSubmit(e)} ref = {this.formRef}>
                     <input onChange={(e) => this.handleChange(e)} type= "text" name = "name" placeholder = "name"/>
+                    <input onChange={(e) => this.handleChange(e)} type= "file" name = "picture" placeholder = "picture"/>
                     <input onChange={(e) => this.handleChange(e)} type= "text" name = "tagline" placeholder = "tagline"/>
                     <input onChange={(e) => this.handleChange(e)} type= "text" name = "description" placeholder = "description"/>
-                    <input onChange={(e) => this.handleChange(e)} type= "text" name = "first_brewed" placeholder = "first_brewed"/>
-                    <input onChange={(e) => this.handleChange(e)} type= "text" name = "brewers_tips" placeholder = "brewers_tips"/>
-                    <input onChange={(e) => this.handleChange(e)} type= "number" name = "attenuation_level" placeholder = "attenuation_level"/>
-                    <input onChange={(e) => this.handleChange(e)} type= "text" name = "contributed_by" placeholder = "contributed_by"/>
+                    <input onChange={(e) => this.handleChange(e)} type= "text" name = "first_brewed" placeholder = "first brewed"/>
+                    <input onChange={(e) => this.handleChange(e)} type= "text" name = "brewers_tips" placeholder = "brewers tips"/>
+                    <input onChange={(e) => this.handleChange(e)} type= "number" name = "attenuation_level" placeholder = "attenuation level"/>
+                    <input onChange={(e) => this.handleChange(e)} type= "text" name = "contributed_by" placeholder = {getUser.username==null? `${getUser.username}` : "contributed by"}/>
                     <button type = "submit">Submit</button>
                 </form>
             </div>
