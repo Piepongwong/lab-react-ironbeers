@@ -132,7 +132,7 @@ The same way we did with the **Single Beer** view, we should render the followin
   <img src="https://user-images.githubusercontent.com/23629340/40707457-05a22990-63f1-11e8-84b2-a86143b7b821.png" height="600px" />
 </div>
 
-### Iteration 6: Create New Beer
+### Part II - Iteration 6: Create New Beer
 
 Finally, on the `/new-beer` route (remember, this is you react route, you're displaying the form on this route), we should render a form where user can create new beers. The `form` should include the following fields:
 
@@ -156,6 +156,18 @@ Since we didn't cover how to upload images yet, don't worry about it now - the A
 <div style="display: flex; justify-content: center">
   <img src="https://user-images.githubusercontent.com/23629340/40707877-3c9dad42-63f2-11e8-8c95-4881bbde64a2.png" height="600px" />
 </div>
+
+## Part II - Iteration 7: Create a New Beer With an Image
+Make a separate page where you can create a beer with an image. This is mainly to practice the difference between controlled forms (through state) and the escape hatch with refs. Later you can switch to only creating beers with images.
+
+## Part II - Iteration 8: Delete a Beer
+Make it possible to delete a beer. You can do this either in the detail page, list page or both. Note that you can only delete beers without owners or beers that are created by you while logged in. Check the documentation. 
+
+## Part II - Iteration 9: Edit a Beer
+Create an edit button on the detail page. If you click on it, you show the edit form. The form should be prepopulated with the data, except for the file upload. Only make the text fields editable by controlling the form. Redirect to the detail page of the same beer after the beer has been updated successfully.
+
+## Part II - (Extra) Bonus: Iteration 10: Edit the Image
+Extend iteration 9 with files. The input field for the image can't be prepopulated. You could create a second form with a separate button on the page for the file field only. 
 
 ### (Extra) Bonus Iteration: Filter the Beers
 

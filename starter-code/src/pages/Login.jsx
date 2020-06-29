@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Default from '../layouts/Default';
 import { login } from "../utils/auth";
 
-class Signup extends Component {
+class Login extends Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
@@ -56,4 +56,4 @@ class Signup extends Component {
     }
 }
 
-export default Signup;
+export default Login;

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Default from '../layouts/Default';
 import { logout } from "../utils/auth";
 
-class Signup extends Component {
+class Logout extends Component {
     componentDidMount(){
         logout()
         .then(() => {
@@ -22,4 +22,4 @@ class Signup extends Component {
     }
 }
 
-export default Signup;
+export default Logout;
