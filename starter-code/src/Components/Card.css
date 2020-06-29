@@ -1,0 +1,33 @@
+.left img{
+    width:50%;
+}
+
+.right h3{
+    font-size: 1.1em;
+    font-weight: 900;
+    padding: 2% 0;
+}
+
+h4{
+    font-size: 0.9em;
+    font-weight: 800;
+    margin-bottom: 3%;
+}
+
+.tagline{
+    color:#bfbfbf
+}
+
+.right p{
+    font-size: 0.9em;
+    margin-bottom: 2%;
+}
+
+.right ul li{
+    font-size: 0.9em;
+}
+
+span{
+    font-size: 1em;
+    font-weight: 800;
+}
