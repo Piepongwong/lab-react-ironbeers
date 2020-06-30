@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import Default from '../layouts/Default';
+import DefaultLayout from '../layout/Default';
 
 export default class Home extends Component {
     render() {
         return (
-            <Default>
+            <DefaultLayout>
                 <h1>Ironbeers</h1>
                     <Link to="/beers">
                         <img src="../images/beers.png" alt="All beers"/>
@@ -25,7 +25,7 @@ export default class Home extends Component {
                     <Link to="/new-beer-img">
                         <h2>New beer with image</h2>
                     </Link>
-            </Default>
+            </DefaultLayout>
         )
     }
 }

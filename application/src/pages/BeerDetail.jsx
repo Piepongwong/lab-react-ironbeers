@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import Header from '../components/Header';
+import React, { Component } from 'react';
+import DefaultLayout from '../layout/Default';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default class BeerDetail extends Component {
     constructor(props) {
@@ -31,8 +32,8 @@ export default class BeerDetail extends Component {
 
     render() {
         return (
+            <DefaultLayout>
             <div>
-                <Header />
                 <h1>Beer detail page</h1>
                 <img src={this.state.image_url} alt={this.state.name}/>
                 <h3>{this.state.tagline}</h3>
@@ -41,8 +42,9 @@ export default class BeerDetail extends Component {
                 <p>{this.state.attenuation_level}</p>
                 <p>{this.state.description}</p>
                 <p>{this.state.contributed_by}</p>
-                <Link to={`/update/${response.data._id}`}>Update beer</Link>
+                <Link to={`/update/${this.state._id}`}>Update beer</Link>
             </div>
+            </DefaultLayout>
         )
     }
 }

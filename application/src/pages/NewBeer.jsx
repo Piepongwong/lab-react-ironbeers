@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
+import DefaultLayout from '../layout/Default';
 import axios from 'axios';
 
 export default class NewBeer extends Component {
@@ -47,8 +47,8 @@ export default class NewBeer extends Component {
 
     render() {
         return (
+            <DefaultLayout>
             <div>
-                <Header />
                 <h1>New Beer</h1>
                 <form onSubmit={this.handleFormSubmit}>
                     <input type="text" name="name" value={this.state.name} onChange={ e => this.handleChange(e) } placeholder="Name"/>
@@ -61,6 +61,7 @@ export default class NewBeer extends Component {
                     <button type="submit">Submit</button>
                 </form>
             </div>
+            </DefaultLayout>
         )
     }
 }

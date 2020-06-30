@@ -1,7 +1,6 @@
 import React from 'react'
-import './Default.sass';
 
-export default function Default(props) {
+export default function Form(props) {
     return (
         <div>
             {props.children}

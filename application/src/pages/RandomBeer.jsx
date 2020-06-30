@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import Header from '../components/Header';
+import React, { Component } from 'react';
+import DefaultLayout from '../layout/Default';
 import axios from 'axios';
 
 export default class RandomBeer extends Component {
@@ -21,8 +21,8 @@ export default class RandomBeer extends Component {
     
     render() {
         return (
+            <DefaultLayout>
             <div>
-                <Header />
                 <h1>Random beer</h1>
                 <img src={this.state.image_url} alt={this.state.name}/>
                 <h3>{this.state.tagline}</h3>
@@ -32,6 +32,7 @@ export default class RandomBeer extends Component {
                 <p>{this.state.description}</p>
                 <p>{this.state.contributed_by}</p>
             </div>
+            </DefaultLayout>
         )
     }
 }

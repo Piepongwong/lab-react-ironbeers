@@ -7,6 +7,9 @@ import RandomBeer from './pages/RandomBeer';
 import NewBeer from './pages/NewBeer';
 import NewBeerImg from './pages/NewBeerImg';
 import BeerDetail from './pages/BeerDetail';
+import SignUp from './pages/SignUp';
+import LogIn from './pages/LogIn';
+import LogOut from './pages/LogOut';
 
 
 class App extends Component {
@@ -20,6 +23,9 @@ class App extends Component {
           <Route path="/new-beer" component={NewBeer} />
           <Route path="/new-beer-img" component={NewBeerImg} />
           <Route path="/beers/:id" component={BeerDetail} />
+          <Route path="/signup" component={SignUp} />
+          <Route path="/login" component={LogIn} />
+          <Route path="/logout" component={LogOut} />
         </Router>
       </div>
     );

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Header from '../components/Header';
 import axios from 'axios';
 
 export default class UpdateBeer extends Component {
@@ -48,7 +47,6 @@ export default class UpdateBeer extends Component {
     render() {
         return (
             <div>
-                <Header />
                 <h1>New Beer</h1>
                 <form onSubmit={this.handleFormSubmit}>
                     <input type="text" name="name" value={this.state.name} onChange={ e => this.handleChange(e) } placeholder="Name"/>
@@ -70,61 +68,61 @@ export default class UpdateBeer extends Component {
 
 
 
-constructor(props) {
-    super(props);
-    this.setTagline = this.setTagline.bind(this);
-    this.setDescription = this.setDescription.bind(this);
-    this.setBrewersTips = this.setBrewersTips.bind(this);
-}
+// constructor(props) {
+//     super(props);
+//     this.setTagline = this.setTagline.bind(this);
+//     this.setDescription = this.setDescription.bind(this);
+//     this.setBrewersTips = this.setBrewersTips.bind(this);
+// }
 
-state = {
-    image: "",
-    name: "",
-    calories: "",
-    quantity: 0
-}
+// state = {
+//     image: "",
+//     name: "",
+//     calories: "",
+//     quantity: 0
+// }
 
-setTagline(e) {
-    this.setState({
-        tagline: e.target.value
-    })
-}
+// setTagline(e) {
+//     this.setState({
+//         tagline: e.target.value
+//     })
+// }
 
-setDescription(e) {
-    this.setState({
-        description: e.target.value
-    })
-}
+// setDescription(e) {
+//     this.setState({
+//         description: e.target.value
+//     })
+// }
 
-setBrewersTips(e) {
-    this.setState({
-        brewers_tips: e.target.value
-    })
-}
+// setBrewersTips(e) {
+//     this.setState({
+//         brewers_tips: e.target.value
+//     })
+// }
 
-render() {
-    return (
-        <div>
+// render() {
+//     return (
+//         <div>
 
-            <form onSubmit={this.handleFormSubmit}>
-                <input type="text" class="input"
-                onChange={this.setTagline}
-                value={this.state.tagline}
-                placeholder="Tagline"
-                name="tagline" />
-                <input type="text" class="input"
-                onChange={this.setDescription}
-                value={this.state.description}
-                placeholder="Description"
-                name="description" />
-                <input type="text" class="input"
-                onChange={this.setBrewersTips}
-                value={this.state.brewers_tips}
-                placeholder="Brewers tips"
-                name="brewers_tips" />
-                <input class="button is-info" type="submit" value="Save" />
-            </form>
-        </div>
-    )
-}
-}
+//             <form onSubmit={this.handleFormSubmit}>
+//                 <input type="text" class="input"
+//                 onChange={this.setTagline}
+//                 value={this.state.tagline}
+//                 placeholder="Tagline"
+//                 name="tagline" />
+//                 <input type="text" class="input"
+//                 onChange={this.setDescription}
+//                 value={this.state.description}
+//                 placeholder="Description"
+//                 name="description" />
+//                 <input type="text" class="input"
+//                 onChange={this.setBrewersTips}
+//                 value={this.state.brewers_tips}
+//                 placeholder="Brewers tips"
+//                 name="brewers_tips" />
+//                 <input class="button is-info" type="submit" value="Save" />
+//             </form>
+//         </div>
+//     )
+// }
+// }

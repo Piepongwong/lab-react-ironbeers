@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Header from '../components/Header';
 import axios from 'axios';
+import DefaultLayout from '../layout/Default';
 import { Link } from 'react-router-dom';
 
 export default class AllBeers extends Component {
@@ -27,23 +27,34 @@ export default class AllBeers extends Component {
 
     render() {
         return (
-            <div>
-                <Header />
-                <h1>All beers</h1>
-                {
-                    this.state.allBeers.map(beer => {
-                        return (
-                        <div key={beer._id}>
-                            <Link to={`/beers/${beer._id}`}>
-                                <img src={beer.image_url} alt={beer.name}/>
-                                <h3>{beer.name}</h3>
-                                <p>{beer.tagline}</p>
-                                <p>{beer.contributed_by}</p>
-                            </Link>
-                        </div>
-                        )})
-                }
+            <DefaultLayout>
+            <div className="card-columns">
+                
+
+                        {
+                            this.state.allBeers.map(beer => {
+                                return (
+                                <div key={beer._id}>
+                                    <Link to={`/beers/${beer._id}`}>
+                                    {/* <div className="col mb-4"> */}
+                    <div className="card">
+                                        <img src={beer.image_url} alt={beer.name}/>
+                                        <div className="card-body">
+                                            <h5 className="card-title">{beer.name}</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted">{beer.tagline}</h6>
+                                            <div class="card-footer">
+                                                <small class="text-muted">{beer.contributed_by}</small>
+                                            </div>
+                                        </div>
+                                        </div>
+                {/* </div> */}
+                                    </Link>
+                                </div>
+                                )})
+                            }
+
             </div>
+</DefaultLayout>
         )
     }
 }
