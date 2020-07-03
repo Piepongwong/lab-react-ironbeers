@@ -1,0 +1,22 @@
+.beer-image img {
+    height: 40vh;
+    margin-bottom: 10%;
+}
+
+.beer-detail {
+    margin-top: 8%;
+}
+
+.beer-title, .beer-subtitle {
+    display: flex;
+    width: 80vw;
+    justify-content: space-between;
+}
+
+.description, .contributor {
+    width: 80vw;
+}
+
+.contributor {
+    color: gray;
+}
